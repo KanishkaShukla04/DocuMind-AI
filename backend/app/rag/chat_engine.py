@@ -14,9 +14,20 @@ llm = ChatGoogleGenerativeAI(
 )
 
 
-def answer_question(question, history=[]):
+def answer_question(question, history=None):
+
+    if history is None:
+        history = []
 
     results = retrieve(question)
+
+    # Prevent crashes when no relevant chunks are found
+    if not results["documents"] or not results["documents"][0]:
+        return {
+            "answer": "I could not find relevant information.",
+            "citations": []
+        }
+
 
     context = "\n\n".join(
         results["documents"][0]
@@ -71,7 +82,7 @@ Question:
     seen = set()
 
 
-    for meta in results["metadatas"][0]:
+    for meta in results["metadatas"][0][:5]:
 
         key = (
             meta["document_name"],

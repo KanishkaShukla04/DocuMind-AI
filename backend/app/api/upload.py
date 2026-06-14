@@ -84,16 +84,19 @@ async def upload_documents(
 
 
         results.append({
-            "filename": file.filename,
-            "status": "processed",
-            "document_id": document_id,
-            "pages": len(pages)
-        })
+    "filename": file.filename,
+    "status": "indexed",
+    "steps": [
+        "uploaded",
+        "parsing",
+        "classifying",
+        "indexed"
+    ],
+    "document_id": document_id,
+    "pages": len(pages)
+})
 
 
     return {
-    "status": "processed",
-    "document_id": document_id,
-    "pages": len(pages),
-    "classification": classification
+    "documents": results
 }

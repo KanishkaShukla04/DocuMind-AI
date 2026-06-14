@@ -58,7 +58,7 @@ setQuestion("");
 
   return (
     <main className="max-w-4xl mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className="text-4xl font-bold mb-6 text-white">
         Chat with Documents
       </h1>
 
@@ -76,13 +76,31 @@ setQuestion("");
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Ask something..."
-          className="flex-1 border rounded px-4 py-2"
+          className="flex-1 rounded-xl 
+          px-4 
+          py-3
+          bg-white/20
+backdrop-blur-md
+border
+border-white/30
+text-white
+placeholder:text-white/70
+"
         />
 
         <button
           onClick={handleAsk}
           disabled={loading}
-          className="bg-black text-white px-4 py-2 rounded"
+          className="
+px-6 py-3
+rounded-xl
+bg-white/20
+backdrop-blur-md
+border
+border-white/30
+text-white
+hover:bg-white/30
+"
         >
           {loading ? "Thinking..." : "Ask"}
         </button>

@@ -13,13 +13,17 @@ export default function UploadPage() {
 
     setLoading(true);
     const data = await uploadFile(files);
-    setResult((prev) => [...prev, ...data]);
+    setResult((prev)=>[ ...prev, ...data.documents]);
     setLoading(false);
   }
 
   return (
     <div className="p-10">
-      <h1 className="text-2xl font-bold">Upload Document</h1>
+      <h1 className="
+text-4xl
+font-bold
+text-white
+">Upload Document</h1>
 
       <input
         type="file"
@@ -30,17 +34,46 @@ export default function UploadPage() {
 
       <button
         onClick={handleUpload}
-        className="ml-4 px-4 py-2 bg-black text-white rounded"
+        className="ml-4
+px-5
+py-2
+rounded-xl
+bg-white/20
+backdrop-blur
+border
+border-white/30
+text-white
+hover:bg-white/30
+transition"
       >
         {loading ? "Uploading..." : "Upload"}
       </button>
 
       {result && (
-        <div className="mt-6 border p-4 rounded">
+        <div className="
+mt-6
+p-6
+rounded-2xl
+bg-white/10
+backdrop-blur-xl
+border
+border-white/20
+text-white
+">
           {result.map((doc: any) => (
             <div key={doc.document_id} className="mb-4">
               <p>📄 {doc.filename}</p>
-              <p>Status: {doc.status}</p>
+              <div className="mt-3 space-y-1">
+
+{doc.steps?.map((step:string)=>(
+  <p key={step}>
+    <span className="text-green-400">✓</span>
+    {" "}
+    {step}
+  </p>
+))}
+
+</div>
               <p>Document ID: {doc.document_id}</p>
               <p>Pages: {doc.pages}</p>
               {doc.classification && (

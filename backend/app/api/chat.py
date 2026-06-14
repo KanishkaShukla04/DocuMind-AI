@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from typing import List, Dict, Any
 
 from app.rag.chat_engine import answer_question
 
@@ -12,7 +13,9 @@ router = APIRouter(
 
 class ChatRequest(BaseModel):
     question: str
-    history: list = []
+    history: List[Dict[str, Any]] = Field(
+        default_factory=list
+    )
 
 
 @router.post("/")
