@@ -1,0 +1,62 @@
+# ======================
+# Environment / Secrets
+# ======================
+.env
+*.env
+
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+
+venv/
+env/
+.venv/
+
+# ======================
+# Backend generated data
+# ======================
+backend/uploads/
+backend/chroma_db/
+backend/metadata/
+backend/page_images/
+
+# ======================
+# Node / Next.js
+# ======================
+node_modules/
+**/node_modules/
+
+.next/
+**/.next/
+
+out/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ======================
+# Build files
+# ======================
+dist/
+build/
+
+# ======================
+# OS
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# IDE
+# ======================
+.vscode/
+.idea/
+
+# ======================
+# Logs
+# ======================
+*.log
