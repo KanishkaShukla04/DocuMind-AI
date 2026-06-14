@@ -3,6 +3,8 @@
 # ======================
 .env
 *.env
+.env.*
+!.env.example
 
 # ======================
 # Python
@@ -19,9 +21,16 @@ env/
 # Backend generated data
 # ======================
 backend/uploads/
+uploads/
 backend/chroma_db/
 backend/metadata/
 backend/page_images/
+
+# ======================
+# Vector DB / Generated Files
+# ======================
+chroma/
+*.db
 
 # ======================
 # Node / Next.js
