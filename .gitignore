@@ -1,71 +1,28 @@
-# ======================
-# Environment / Secrets
-# ======================
-.env
-*.env
-.env.*
-!.env.example
+# dependencies
+node_modules/
 
-# ======================
-# Python
-# ======================
+# Next build
+.next/
+
+# environment
+.env
+.env.local
+*.env
+
+# python cache
 __pycache__/
 *.py[cod]
-*.pyo
 
-venv/
-env/
-.venv/
-
-# ======================
-# Backend generated data
-# ======================
-backend/uploads/
+# generated backend data
 uploads/
-backend/chroma_db/
-backend/metadata/
-backend/page_images/
+metadata/
+page_images/
+chroma_db/
 
-# ======================
-# Vector DB / Generated Files
-# ======================
-chroma/
-*.db
-
-# ======================
-# Node / Next.js
-# ======================
-node_modules/
-**/node_modules/
-
-.next/
-**/.next/
-
-out/
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# ======================
-# Build files
-# ======================
-dist/
-build/
-
-# ======================
-# OS
-# ======================
-.DS_Store
-Thumbs.db
-
-# ======================
 # IDE
-# ======================
 .vscode/
 .idea/
 
-# ======================
-# Logs
-# ======================
-*.log
+# OS
+.DS_Store
+Thumbs.db
