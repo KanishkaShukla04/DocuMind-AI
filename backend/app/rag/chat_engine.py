@@ -21,18 +21,17 @@ def answer_question(question, history=None):
 
     results = retrieve(question)
 
-    # Prevent crashes when no relevant chunks are found
+    # No relevant chunks found
     if not results["documents"] or not results["documents"][0]:
         return {
             "answer": "I could not find relevant information.",
             "citations": []
         }
 
-
+    # Use only top retrieved chunks
     context = "\n\n".join(
-        results["documents"][0]
+        results["documents"][0][:5]
     )
-
 
     chat_history = "\n".join(
         [
@@ -41,28 +40,26 @@ def answer_question(question, history=None):
         ]
     )
 
-
     prompt = f"""
 You are a document assistant.
 
 Previous conversation:
 {chat_history}
 
-Answer the user's question using the context.
+Answer ONLY using the provided context.
 
-Return the answer in well-formatted Markdown.
-
-Use:
-- Headings
-- Bullet points
-- Short paragraphs
-
-Do not return plain text.
-
-If the answer is not present,
-respond:
+If the answer is not explicitly present in the context,
+respond exactly:
 
 I could not find relevant information.
+
+Rules:
+- Do not use outside knowledge.
+- Do not guess.
+- Do not infer missing facts.
+- Only use information found in the context.
+- Return the answer in Markdown format.
+- Use headings, bullet points, and short paragraphs when appropriate.
 
 Context:
 {context}
@@ -71,16 +68,12 @@ Question:
 {question}
 """
 
-
     response = llm.invoke(prompt)
 
     answer = response.content
 
-
     citations = []
-
     seen = set()
-
 
     for meta in results["metadatas"][0][:5]:
 
@@ -89,9 +82,7 @@ Question:
             meta["page"]
         )
 
-
         if key not in seen:
-
             seen.add(key)
 
             citations.append({
@@ -99,7 +90,6 @@ Question:
                 "page": meta["page"],
                 "image_path": meta["image_path"]
             })
-
 
     return {
         "answer": answer,
