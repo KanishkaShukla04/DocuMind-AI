@@ -48,16 +48,24 @@ async def upload_documents(
     for page in pages)
 
 
-        classification = classify_document(full_text)
+        try:
+           classification = classify_document(full_text)
+        except Exception as e:
+            print("Classification Error:", str(e))
+
+    classification = {
+        "document_type": "unknown",
+        "topic": "unknown",
+        "sensitivity": "unknown"}
 
 
-        images = convert_pdf_to_images(
+    images = convert_pdf_to_images(
             str(filepath),
             document_id
         )
 
 
-        metadata = {
+    metadata = {
       "document_id": document_id,
       "filename": file.filename,
       "total_pages": len(pages),
@@ -65,7 +73,7 @@ async def upload_documents(
       "pages": []}
 
 
-        for i, page in enumerate(pages):
+    for i, page in enumerate(pages):
 
             metadata["pages"].append({
                 "page": page["page"],
@@ -74,16 +82,16 @@ async def upload_documents(
             })
 
 
-        save_metadata(
+    save_metadata(
             document_id,
             metadata
         )
 
 
-        index_document(metadata)
+    index_document(metadata)
 
 
-        results.append({
+    results.append({
     "filename": file.filename,
     "status": "indexed",
     "steps": [
