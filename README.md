@@ -4,9 +4,9 @@ AI-powered Document Intelligence + Agentic RAG system built for AI Engineer Inte
 
 ## Live Demo
 
-Frontend: https://YOUR-VERCEL-URL.vercel.app
+Frontend: https://docu-mind-jlwvd44ej-kanishkashukla04s-projects.vercel.app/
 
-Backend API: https://YOUR-RAILWAY-URL.up.railway.app
+Backend API: https://documind-ai-production-8171.up.railway.app/
 
 GitHub Repository: https://github.com/KanishkaShukla04/DocuMind-AI
 
