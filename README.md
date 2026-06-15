@@ -2,6 +2,14 @@
 
 AI-powered Document Intelligence + Agentic RAG system built for AI Engineer Internship Assessment.
 
+## Live Demo
+
+Frontend: https://YOUR-VERCEL-URL.vercel.app
+
+Backend API: https://YOUR-RAILWAY-URL.up.railway.app
+
+GitHub Repository: https://github.com/KanishkaShukla04/DocuMind-AI
+
 ## Overview
 
 DocuMind AI processes real-world documents including PDFs, scanned documents, and image-based files.
