@@ -8,7 +8,7 @@ export async function uploadFile(files: File[]) {
 
 
   const response = await fetch(
-    "http://127.0.0.1:8000/upload/",
+     `${process.env.NEXT_PUBLIC_API_URL}/upload/`,
     {
       method:"POST",
       body:formData
@@ -23,7 +23,7 @@ export async function askQuestion(
   history: any[]
 ) {
   const response = await fetch(
-    "http://127.0.0.1:8000/chat/",
+    `${process.env.NEXT_PUBLIC_API_URL}/chat/`,
     {
       method: "POST",
       headers: {
@@ -38,3 +38,4 @@ export async function askQuestion(
 
   return response.json();
 }
+    

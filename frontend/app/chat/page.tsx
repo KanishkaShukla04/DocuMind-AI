@@ -4,6 +4,7 @@ import { useState } from "react";
 import { askQuestion } from "@/lib/api";
 import ReactMarkdown from "react-markdown";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 interface Citation {
   document: string;
   page: number;
@@ -142,12 +143,12 @@ hover:bg-white/30
                       </p>
 
                       <a
-                       href={`http://127.0.0.1:8000/${citation.image_path.replace(/\\/g, "/")}`}
+                       href={`${API_URL}/${citation.image_path.replace(/\\/g, "/")}`}
                        target="_blank"
                        rel="noopener noreferrer"
                       >
                       <img
-                        src={`http://127.0.0.1:8000/${citation.image_path.replace(/\\/g, "/")}`}
+                        src={`${API_URL}/${citation.image_path.replace(/\\/g, "/")}`}
                         alt="page preview"
                         className="mt-2 rounded border max-w-sm cursor-pointer"
                       />
